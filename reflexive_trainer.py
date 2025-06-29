@@ -4,13 +4,6 @@ import numpy as np
 import joblib
 from sklearn.ensemble import RandomForestClassifier
 
-mean_hilbert_vector = np.array([0.1224046523577074, 0.2449260807623146, 0.37158138122708256, 0.49183735432188114, 0.6141252306326913, 0.7373473153186775, 0.8656374804400092])
-
-def hilbert_similarity(vec, reference):
-    v1 = np.array(vec) / 47.0
-    v2 = reference
-    return float(np.dot(v1, v2) / (np.linalg.norm(v1) * np.linalg.norm(v2)))
-
 def compute_features(number_set):
     gaps = np.diff(sorted(number_set))
     return {
@@ -28,8 +21,7 @@ def compute_features(number_set):
         "lambda_12": np.random.uniform(0.2, 1.0),
         "lambda_13": np.random.uniform(0.2, 1.0),
         "lambda_14": np.random.uniform(0.2, 1.0),
-        "lambda_15": np.random.uniform(0.2, 1.0),
-        "lambda_16": hilbert_similarity(number_set, mean_hilbert_vector)
+        "lambda_15": np.random.uniform(0.2, 1.0)
     }
 
 def prepare_training_data(path="Oz_Lotto_Historical_Draws.csv"):
