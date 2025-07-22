@@ -3,8 +3,8 @@ services:
     name: ozlotter-smartpro
     env: python
     plan: free
-    buildCommand: pip install -r requirements.txt
-    startCommand: streamlit run streamlit_app.py
+    buildCommand: pip install -r enhanced_requirements.txt
+    startCommand: streamlit run enhanced_streamlit_app.py --server.port=$PORT --server.address=0.0.0.0
     envVars:
       - key: PYTHON_VERSION
         value: 3.10
